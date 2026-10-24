@@ -18,13 +18,19 @@
             const favicon = getInputFavicon();
             const title = getInputTitle();
             
+            let siteLink = getInputURL();
+            
+            if (/^https?:\/\//i.test(siteLink)==false) {
+                siteLink = "https://"+siteLink;
+            }
+            
             let win = window.open()
             
             let iframe = win.document.createElement('iframe')
             iframe.style.width = "100%";
             iframe.style.height = "100%";
             iframe.style.border = "none";
-            iframe.src = getInputURL();
+            iframe.src = siteLink;
             
             win.document.body.appendChild(iframe);
             
