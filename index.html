@@ -5,15 +5,21 @@
     
     <p>Hello! This HTML script cloaks websites in an <b>about:blank</b> tab and can change the title and favicon. Just enter the URL in the box below and click open to run the Javascript code to cloak it.<br><br>If the site refuses to connect, you will not be able to cloak it.</p>
     
-    <input type="text" id="InputURL" placeholder="Site URL"><br>
-    <input type="text" id="InputFavicon" placeholder="Favicon URL"><br>
-    <input type="text" id="InputTitle" placeholder="Title"><br>
+    <input type="text" id="input-url" placeholder="Site URL" onkeydown="saveData(this,'savedInputURL')"><br>
+    <input type="text" id="input-favicon" placeholder="Favicon URL" onkeydown="saveData(this,'savedInputFavicon')"><br>
+    <input type="text" id="input-title" placeholder="Title" onkeydown="saveData(this,'savedTitle')"><br>
     
     <button onclick="openGame()" style="cursor:pointer;">Open</button>
     
     </div>
     
     <script>
+        if (localStorage.getItem('savedText') !== null) {
+            document.getElementById('input-title').value = localStorage.getItem('savedInputURL');
+            document.getElementById('input-favicon').value = localStorage.getItem('savedInputFavicon');
+            document.getElementById('input-title').value = localStorage.getItem('savedTitle');
+        }
+        
         function openGame() {
             const favicon = getInputFavicon();
             const title = getInputTitle();
@@ -73,15 +79,19 @@
         }
         
         function getInputURL() {
-            return document.getElementById('InputURL').value;
+            return document.getElementById('input-url').value;
         }
         
         function getInputFavicon() {
-            return document.getElementById('InputFavicon').value;
+            return document.getElementById('input-favicon').value;
         }
         
         function getInputTitle() {
-            return document.getElementById('InputTitle').value;
+            return document.getElementById('input-title').value;
+        }
+        
+        function saveData(element, save) {
+            localStorage.setItem(save, element.value);
         }
     </script>
     
