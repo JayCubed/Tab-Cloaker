@@ -5,18 +5,24 @@
     
     <p>Hello! This HTML script cloaks websites in an <b>about:blank</b> tab and can change the title and favicon. Just enter the URL in the box below and click open to run the Javascript code to cloak it.<br><br>If the site refuses to connect, you will not be able to cloak it.</p>
     
-    <input type="text" id="input-url" placeholder="Site URL" onkeydown="saveData(this,'savedInputURL')"><br>
-    <input type="text" id="input-favicon" placeholder="Favicon URL" onkeydown="saveData(this,'savedInputFavicon')"><br>
-    <input type="text" id="input-title" placeholder="Title" onkeydown="saveData(this,'savedTitle')"><br>
+    <input type="text" id="input-url" placeholder="Site URL" oninput="saveData(this,'savedInputURL')"><br>
+    <input type="text" id="input-favicon" placeholder="Favicon URL" oninput="saveData(this,'savedInputFavicon')"><br>
+    <input type="text" id="input-title" placeholder="Title" oninput="saveData(this,'savedTitle')"><br>
     
     <button onclick="openGame()" style="cursor:pointer;">Open</button>
     
     </div>
     
     <script>
-        if (localStorage.getItem('savedText') !== null) {
+        if (localStorage.getItem('savedInputURL') !== null) {
             document.getElementById('input-title').value = localStorage.getItem('savedInputURL');
+        }
+        
+        if (localStorage.getItem('savedInputFavicon') !== null) {
             document.getElementById('input-favicon').value = localStorage.getItem('savedInputFavicon');
+        }
+        
+        if (localStorage.getItem('savedTitle') !== null) {
             document.getElementById('input-title').value = localStorage.getItem('savedTitle');
         }
         
@@ -90,8 +96,8 @@
             return document.getElementById('input-title').value;
         }
         
-        function saveData(element, save) {
-            localStorage.setItem(save, element.value);
+        function saveData(element, saveKey) {
+            localStorage.setItem(saveKey, element.value);
         }
     </script>
     
