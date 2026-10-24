@@ -1,0 +1,109 @@
+<html>
+    <div>
+        
+    <h1>Tab Cloaker Through Iframe</h1>
+    
+    <p>Hello! This HTML script cloaks websites in an <b>about:blank</b> tab and can change the title and favicon. Just enter the URL in the box below and click open to run the Javascript code to cloak it.<br><br>If the site refuses to connect, you will not be able to cloak it.</p>
+    
+    <input type="text" id="InputURL" placeholder="Site URL"><br>
+    <input type="text" id="InputFavicon" placeholder="Favicon URL"><br>
+    <input type="text" id="InputTitle" placeholder="Title"><br>
+    
+    <button onclick="openGame()" style="cursor:pointer;">Open</button>
+    
+    </div>
+    
+    <script>
+        function openGame() {
+            const favicon = getInputFavicon();
+            const title = getInputTitle();
+            
+            let win = window.open()
+            
+            let iframe = win.document.createElement('iframe')
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+            iframe.src = getInputURL();
+            
+            win.document.body.appendChild(iframe);
+            
+            const style = win.document.createElement('style');
+            style.textContent = `html, body {
+              margin: 0;
+              padding: 0;
+              height: 100%;
+              overflow: hidden;
+            }
+
+            .iframe-container {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+            }
+
+            .iframe-container iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border: none;
+            }`;
+            
+            win.document.head.appendChild(style);
+            win.document.title=title;
+            
+            let link = win.document.querySelector("link[rel~='icon']");
+            
+            if (!link) {
+                link = win.document.createElement('link');
+                link.rel = 'icon';
+                win.document.head.appendChild(link);
+            }
+            
+            link.href = favicon;
+        }
+        
+        function getInputURL() {
+            return document.getElementById('InputURL').value;
+        }
+        
+        function getInputFavicon() {
+            return document.getElementById('InputFavicon').value;
+        }
+        
+        function getInputTitle() {
+            return document.getElementById('InputTitle').value;
+        }
+    </script>
+    
+    <style>
+        html, body {
+          height: 100%;
+          margin: 0;
+        }
+
+        body {
+          display: flex;
+          flex-direction: column;
+        }
+
+        div {
+          flex: 1;
+        }
+
+        footer {
+          background-color: #333;
+          color: white;
+          text-align: center;
+          padding: 15px;
+          font-family: sans-serif
+        }
+    </style>
+    
+    <footer>
+        <p>&copy; 2026 <a href="https://github.com/JayCubed" style = "color: White;">JayCubed</a>. <a href="https://github.com/JayCubed/Tab-Cloaker/blob/main/LICENSE" style="color: White;">MIT License</a>.</p>
+  </footer>
+</html>
