@@ -7,6 +7,6 @@ This HTML script embeds websites in about:blank tabs. [Open Here](https://jaycub
 - Borderless Iframe
 - Saves Inputs
 ## How it works
-It runs Javascript code following user input to open an about:blank and inserts HTML code.
+It runs Javascript code following user input to open an about:blank and inserts HTML code and embeds the site.
 ## License
 This repository is under the [MIT License](LICENSE).
