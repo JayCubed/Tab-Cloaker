@@ -1,5 +1,5 @@
 # Tab Cloaker
-This HTML script embeds websites in about:blank tabs. <a href="https://jaycubed.github.io/Tab-Cloaker/" target="_blank">Open Here</a>
+This HTML script embeds websites in about:blank tabs. [Open Here](https://jaycubed.github.io/Tab-Cloaker/)
 ## Features
 - Custom URL
 - Custom Favicon
